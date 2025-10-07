@@ -1,6 +1,7 @@
 # babylon-mmd-showcase
 
 ![render148](image.png)
+[rendered video](https://youtu.be/P5UaVRjNmAw)
 
 ## Overview
 
