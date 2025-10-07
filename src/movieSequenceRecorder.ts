@@ -175,11 +175,18 @@ export class MovieSequenceRecorder {
             await new Promise((resolve) => setTimeout(resolve));
         }
 
+        // initial render to avoid black first frame
+        for (let i = 0; i < 5; ++i) {
+            this._animationUpdate(0, 1 / animationFrameRate);
+            scene.render(true, false);
+            await new Promise((resolve) => setTimeout(resolve, 0));
+        }
+
         // capture frames
         const bufferCanvas = document.createElement("canvas");
         bufferCanvas.width = engine.getRenderWidth();
         bufferCanvas.height = engine.getRenderHeight();
-        const bufferContext = bufferCanvas.getContext("2d", { willReadFrequently: true })!;
+        const bufferContext = bufferCanvas.getContext("2d")!;
 
         renderStatusDisplay.staticInfo = `Resolution: ${bufferCanvas.width}x${bufferCanvas.height}, Temporal samples: ${temporalSamples}, Spatial samples: ${spatialSamples}, Target frame rate: ${frameRate}fps`;
         renderStatusDisplay.renderState = RenderState.Capturing;
@@ -203,9 +210,9 @@ export class MovieSequenceRecorder {
                 this._animationUpdate(subFrameTime, deltaTime);
 
                 for (let temporalIndex = 0; temporalIndex < temporalSamples; ++temporalIndex) {
+                    await new Promise((resolve) => setTimeout(resolve, 0));
                     scene.render(true, false);
                     renderStatusDisplay.render(`(${frame} / ${captureEndFrame}) [${spatialIndex * temporalSamples + temporalIndex + 1} / ${spatialSamples * temporalSamples}]`);
-                    await new Promise((resolve) => setTimeout(resolve, 0));
                 }
             }
 
