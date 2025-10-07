@@ -417,10 +417,11 @@ export class SceneBuilder implements ISceneBuilder {
         }
 
         textRenderer.color = new Color4(1, 1, 1, 1);
-        textRenderer.addParagraph(`Music：めろくる/Mellowcle
-Choreography&Motion Capture Performer：ぴのぴ
-Model：げのげ
-Video：noname0310
+        textRenderer.addParagraph(`Music: めろくる/Mellowcle
+Choreography & Motion Capture Performer: ぴのぴ
+Motion: SAUGU
+Model: げのげ
+Video: noname0310
 `, { textAlign: "left"}, Matrix.Translation(-20, 3, 0));
 
         textRenderer.addParagraph("Telephone feat.Miku Hatsune", { textAlign: "right"}, Matrix.Scaling(2, 2, 2).multiply(Matrix.Translation(20, 3, 0)));
