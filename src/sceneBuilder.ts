@@ -372,7 +372,7 @@ export class SceneBuilder implements ISceneBuilder {
             }));
         }
 
-        const ssaoRenderingPipeline = new SSAO2RenderingPipeline("ssao", scene, { ssaoRatio: 0.5, blurRatio: 1.0 }, [mmdCamera, camera]);
+        const ssaoRenderingPipeline = new SSAO2RenderingPipeline("ssao", scene, { ssaoRatio: 0.5, blurRatio: 1.0 }, [mmdCamera, camera], undefined, Constants.TEXTURETYPE_FLOAT);
         ssaoRenderingPipeline.samples = 64;
 
         const clothMaterialNameSet = new Set<string>([
