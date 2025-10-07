@@ -1,4 +1,5 @@
 import type { Camera } from "@babylonjs/core/Cameras/camera";
+import { Constants } from "@babylonjs/core/Engines/constants";
 import type { ISize } from "@babylonjs/core/Maths/math.size";
 import { Observable } from "@babylonjs/core/Misc/observable";
 import { TAARenderingPipeline } from "@babylonjs/core/PostProcesses/RenderPipeline/Pipelines/taaRenderingPipeline";
@@ -146,7 +147,7 @@ export class MovieSequenceRecorder {
         const targetFrameRateToOriginal = animationFrameRate / frameRate; // 0.5 (60fps -> 30fps)
         const captureEndFrame = this.captureEndFrame;
 
-        const taaRenderPipeline = new TAARenderingPipeline("taa", scene, [camera]);
+        const taaRenderPipeline = new TAARenderingPipeline("taa", scene, [camera], Constants.TEXTURETYPE_FLOAT);
         taaRenderPipeline.isEnabled = true;
         taaRenderPipeline.samples = temporalSamples * spatialSamples;
         taaRenderPipeline.msaaSamples = 4;
@@ -176,7 +177,8 @@ export class MovieSequenceRecorder {
         }
 
         // initial render to avoid black first frame
-        for (let i = 0; i < 5; ++i) {
+        taaRenderPipeline.disableOnCameraMove = true;
+        for (let i = 0; i < 10; ++i) {
             this._animationUpdate(0, 1 / animationFrameRate);
             scene.render(true, false);
             await new Promise((resolve) => setTimeout(resolve, 0));
