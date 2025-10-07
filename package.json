@@ -1,0 +1,46 @@
+{
+    "name": "babylon-mmd-template",
+    "version": "1.0.0",
+    "description": "babylon mmd sample project",
+    "scripts": {
+        "start": "webpack serve --env development",
+        "build": "webpack --env production",
+        "lint": "eslint --ext .ts,.tsx . --fix --cache"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/noname0310/babylon-mmd-template.git"
+    },
+    "author": "noname0310",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/noname0310/babylon-mmd-template/issues"
+    },
+    "homepage": "https://github.com/noname0310/babylon-mmd-template#readme",
+    "devDependencies": {
+        "@babylonjs/addons": "^8.30.4",
+        "@stylistic/eslint-plugin": "^5.4.0",
+        "copy-webpack-plugin": "^13.0.1",
+        "eslint": "^9.37.0",
+        "eslint-plugin-simple-import-sort": "^12.1.1",
+        "eslint-webpack-plugin": "^5.0.2",
+        "file-loader": "^6.2.0",
+        "html-loader": "^5.1.0",
+        "html-webpack-plugin": "^5.6.4",
+        "ts-loader": "^9.5.4",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.46.0",
+        "webpack": "^5.102.0",
+        "webpack-cli": "^6.0.1",
+        "webpack-dev-server": "^5.2.2"
+    },
+    "dependencies": {
+        "@babylonjs/core": "^8.30.4",
+        "@babylonjs/havok": "^1.3.10",
+        "@babylonjs/inspector": "^8.30.4",
+        "@babylonjs/materials": "^8.30.4",
+        "babylon-mmd": "1.0.0-beta.1"
+    },
+    "sideEffects": false
+}
