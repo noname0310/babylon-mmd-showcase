@@ -344,7 +344,7 @@ export class SceneBuilder implements ISceneBuilder {
         physicsRuntime.addRigidBodyToGlobal(groundBody);
 
         const defaultPipeline = new DefaultRenderingPipeline("default", true, scene);
-        defaultPipeline.samples = 1;
+        defaultPipeline.samples = 4;
         defaultPipeline.bloomEnabled = true;
         defaultPipeline.chromaticAberrationEnabled = true;
         defaultPipeline.chromaticAberration.aberrationAmount = 1;
@@ -373,6 +373,7 @@ export class SceneBuilder implements ISceneBuilder {
         }
 
         const ssaoRenderingPipeline = new SSAO2RenderingPipeline("ssao", scene, { ssaoRatio: 0.5, blurRatio: 1.0 }, [mmdCamera, camera], undefined, Constants.TEXTURETYPE_FLOAT);
+        ssaoRenderingPipeline.textureSamples = 4;
         ssaoRenderingPipeline.samples = 64;
 
         const clothMaterialNameSet = new Set<string>([
